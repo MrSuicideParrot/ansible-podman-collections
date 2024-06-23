@@ -159,6 +159,12 @@ options:
           - VLAN tag for bridge which enables vlan_filtering.
         type: int
         required: false
+      vrf:
+        description:
+          - This option assigns a VRF to the bridge interface.
+            Can only be used with the Netavark network backend.
+        type: str
+        required: false
   debug:
     description:
       - Return additional information which can be helpful for investigations.
@@ -832,6 +838,7 @@ def main():
                          mode=dict(type='str', required=False),
                          parent=dict(type='str', required=False),
                          vlan=dict(type='int', required=False),
+                         vrf=dict(type='str', required=False),
                      )),
             executable=dict(type='str', required=False, default='podman'),
             debug=dict(type='bool', default=False),
